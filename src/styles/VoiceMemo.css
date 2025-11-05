@@ -1,0 +1,25 @@
+.voice-memo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voice-memo-btn {
+  background-color: #10b981;
+  color: white;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.voice-memo-btn:hover {
+  background-color: #059669;
+}
+
+.voice-memo-btn.speaking {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}

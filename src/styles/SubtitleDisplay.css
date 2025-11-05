@@ -1,0 +1,12 @@
+.subtitle-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.75rem;
+  max-width: 20rem;
+  text-align: center;
+  word-wrap: break-word;
+}
