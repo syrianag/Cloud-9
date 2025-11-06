@@ -7,7 +7,7 @@ import InfoCards from './components/InfoCards';
 import AlertPopup from './components/AlertPopup';
 import './App.css';
 
-function App() {
+export default function App() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
   const [alerts, setAlerts] = useState([]);

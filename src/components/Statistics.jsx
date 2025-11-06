@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Statistics({ data }) {
+export default function Statistics({ data }) {
   // Defensive: if data isn't available yet, don't try to render properties from it
   if (!data) return null;
   const stats = [
@@ -26,8 +24,6 @@ function Statistics({ data }) {
     </div>
   );
 }
-
-export default Statistics;
 
 function Greeting({name}) {
   return <h1>Hello, {name}!</h1>; // name was put into {} because it is a JS expression 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Header({ city }) {
   const today = new Date().toLocaleDateString('en-US', { 
     weekday: 'long', 

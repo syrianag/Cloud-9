@@ -1,6 +1,4 @@
-import React from 'react';
-
-function AlertPopup({ alerts, onClose }) {
+export default function AlertPopup({ alerts, onClose }) {
   if (!alerts || alerts.length === 0) return null;
 
   return (
@@ -26,5 +24,3 @@ function AlertPopup({ alerts, onClose }) {
     </div>
   );
 }
-
-export default AlertPopup;

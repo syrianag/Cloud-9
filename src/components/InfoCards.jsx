@@ -1,4 +1,3 @@
-import React from 'react';
 export default InfoCards 
 function InfoCards({ data, city }) {
   const windDirection = data.wind.deg;

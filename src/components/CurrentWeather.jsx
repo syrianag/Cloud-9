@@ -1,6 +1,4 @@
-import React from 'react';
-
-function CurrentWeather({ data }) {
+export default function CurrentWeather({ data }) {
   const temp = Math.round(data.main.temp);
   const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
   const description = data.weather[0].description;
@@ -16,4 +14,3 @@ function CurrentWeather({ data }) {
   );
 }
 
-export default CurrentWeather;
