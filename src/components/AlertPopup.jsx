@@ -1,3 +1,4 @@
+// src/components/AlertPopup.jsx
 export default function AlertPopup({ alerts, onClose }) {
   if (!alerts || alerts.length === 0) return null;
 

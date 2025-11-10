@@ -2,24 +2,43 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1rem;
 }
 
 .voice-memo-btn {
-  background-color: #10b981;
-  color: white;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.6rem 1rem;
+  background: rgba(135, 206, 235, 0.15);
+  border: 1px solid #87ceeb;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  color: #87ceeb;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .voice-memo-btn:hover {
-  background-color: #059669;
+  background: #87ceeb;
+  color: #000;
+}
+
+.voice-memo-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .voice-memo-btn.speaking {
-  background-color: #9ca3af;
-  cursor: not-allowed;
+  background: #87ceeb;
+  color: #000;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    box-shadow: 0 0 5px #87ceeb;
+  }
+  to {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #87ceeb;
+  }
 }

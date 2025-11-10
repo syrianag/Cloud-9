@@ -1,5 +1,7 @@
+// src/components/LocationSearch.jsx
 import { useState, useRef, useEffect } from 'react';
 import { ariaLabels, ariaDescriptions } from '../accessibility/ariaConfig';
+import { searchLocations } from '../services/weatherAPI'; // Import the real API function
 import '../styles/LocationSearch.css';
 
 export default function LocationSearch({ onLocationSelect }) {
@@ -12,29 +14,14 @@ export default function LocationSearch({ onLocationSelect }) {
   const searchRef = useRef(null);
   const suggestionRef = useRef(null);
 
-  // Mock data for demo - replace with actual API call
-  const mockLocations = [
-    "New York, NY",
-    "Los Angeles, CA",
-    "Chicago, IL",
-    "Houston, TX",
-    "Phoenix, AZ"
-  ];
-
-  // Simulated API call - replace with actual API integration
-  const searchLocations = async (query) => {
+  // Real API call using Nominatim via searchLocations
+  const fetchSuggestions = async (query) => {
     setIsLoading(true);
     setError(null);
     
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 300));
-      
-      const filtered = mockLocations.filter(location =>
-        location.toLowerCase().includes(query.toLowerCase())
-      );
-      
-      setSuggestions(filtered);
+      const results = await searchLocations(query, 5); // Limit to 5 results
+      setSuggestions(results); // results are [{name, lat, lon}]
     } catch (err) {
       setError('Failed to fetch locations. Please try again.');
     } finally {
@@ -46,7 +33,7 @@ export default function LocationSearch({ onLocationSelect }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (searchQuery.length >= 2) {
-        searchLocations(searchQuery);
+        fetchSuggestions(searchQuery);
       } else {
         setSuggestions([]);
       }
@@ -110,10 +97,10 @@ export default function LocationSearch({ onLocationSelect }) {
     }
   };
 
-  const handleLocationSelect = (location) => {
-    setSearchQuery(location);
+  const handleLocationSelect = (suggestion) => {
+    setSearchQuery(suggestion.name);
     setSuggestions([]);
-    onLocationSelect?.(location);
+    onLocationSelect?.(suggestion); // Pass full {name, lat, lon} to parent
   };
 
   return (
@@ -153,10 +140,10 @@ export default function LocationSearch({ onLocationSelect }) {
               tabIndex={0}
               onClick={() => handleLocationSelect(suggestion)}
               onKeyDown={(e) => handleSuggestionKeyDown(e, suggestion)}
-              aria-selected={searchQuery === suggestion}
+              aria-selected={searchQuery === suggestion.name}
               className="suggestion-item"
             >
-              {suggestion}
+              {suggestion.name}
             </li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
+// src/components/VoiceMemo.jsx
 import { useState } from "react";
-import "../styles/components/voice-memo.css";
+import "../styles/VoiceMemo.css";
 
 const VoiceMemo = ({ weather, location, onStart, onEnd }) => {
   const [speaking, setSpeaking] = useState(false);

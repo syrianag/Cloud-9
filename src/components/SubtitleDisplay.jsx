@@ -1,3 +1,4 @@
+// src/components/SubtitleDisplay.jsx
 import "../styles/SubtitleDisplay.css";
 
 const SubtitleDisplay = ({ text, isVisible }) => {
